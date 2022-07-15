@@ -56,4 +56,4 @@ _**Extendible\_Hash\_Table**_类，实现Extendible\_Hash。
 
 成员函数：
 
-从函数名和注释即可看懂。
+从函数名和注释即可看懂，通过操作bucket和directory进行增删查改。
