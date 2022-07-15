@@ -34,26 +34,4 @@ _**Hash\_Table\_Bucket\_Page**_类，用于描述每个bucket在Page中的组织
 
 成员变量：
 
-* occupied\_\[(BUCKET\_ARRAY\_SIZE - 1) / 8 + 1]：用于记录一个数据位是否被占据过，每一位表示一个数据位，1表示被占据过，0表示未被占据过。
-* readable\_\[(BUCKET\_ARRAY\_SIZE - 1) / 8 + 1]:  用于记录一个数据位是否有数据。
-* array\_\[0]:存储数据。这里的“0”是一种特殊写法，表示一个指针，指向结构体/类中声明这个数组的位置，不占实际内存空间（因为数组名表示一个偏移量）。
-
-成员函数：
-
-基本就是操作三个成员变量，理解三个成员变量即可。
-
-
-
-_**Extendible\_Hash\_Table**_类，实现Extendible\_Hash。
-
-成员变量：
-
-* directory\_page\_id\_ ，记录directory的page\_id;
-* buffer\_pool\_manager\_;
-* comparator\_;
-* hash\_fn  ：哈希函数；
-* table\_latch  :  表的锁；
-
-成员函数：
-
-从函数名和注释即可看懂，通过操作bucket和directory进行增删查改。
+* occupied\_\[(BUCKET\_ARRAY\_SIZE - 1) / 8 + 1]：用于记录一个数据位是否被占据过

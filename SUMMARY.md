@@ -6,3 +6,4 @@
 
 * [Extendible Hash](lab2-hash-index/extendible-hash.md)
 * [实验要求](lab2-hash-index/shi-yan-yao-qiu.md)
+* [思路](lab2-hash-index/si-lu.md)
