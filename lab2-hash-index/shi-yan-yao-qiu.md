@@ -41,3 +41,19 @@ _**Hash\_Table\_Bucket\_Page**_类，用于描述每个bucket在Page中的组织
 成员函数：
 
 基本就是操作三个成员变量，理解三个成员变量即可。
+
+
+
+_**Extendible\_Hash\_Table**_类，实现Extendible\_Hash。
+
+成员变量：
+
+* directory\_page\_id\_ ，记录directory的page\_id;
+* buffer\_pool\_manager\_;
+* comparator\_;
+* hash\_fn  ：哈希函数；
+* table\_latch  :  表的锁；
+
+成员函数：
+
+从函数名和注释即可看懂。
