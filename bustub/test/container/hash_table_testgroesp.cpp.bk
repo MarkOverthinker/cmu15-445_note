@@ -1,0 +1,114 @@
+//===----------------------------------------------------------------------===//
+//
+//                         BusTub
+//
+// hash_table_test.cpp
+//
+// Identification: test/container/hash_table_test.cpp
+//
+// Copyright (c) 2015-2021, Carnegie Mellon University Database Group
+//
+//===----------------------------------------------------------------------===//
+
+#include <thread>  // NOLint
+#include <vector>
+
+#include "buffer/buffer_pool_manager_instance.h"
+#include "common/logger.h"
+#include "container/hash/extendible_hash_table.h"
+#include "gtest/gtest.h"
+#include "murmur3/MurmurHash3.h"
+
+namespace bustub {
+
+// NOLintNEXTLINE
+
+// NOLintNEXTLINE
+TEST(HashTableTest, SampleTest) {
+  const int num_runs = 500;
+
+  for (int run = 0; run < num_runs; run++) {
+    auto *disk_manager = new DiskManager("test.db");
+    auto *bpm = new BufferPoolManagerInstance(50, disk_manager);
+    ExtendibleHashTable<int, int, intComparator> ht("blah", bpm, intComparator(), HashFunction<int>());
+    // insert a few values
+    for (int i = 0; i < 1000; i++) {
+      EXPECT_TRUE(ht.Insert(nullptr, i, i));
+      std::vector<int> res;
+      EXPECT_TRUE(ht.GetValue(nullptr, i, &res));
+      EXPECT_EQ(1, res.size()) << "Failed to insert " << i << std::endl;
+      EXPECT_EQ(i, res[0]);
+    }
+    ht.Verifyintegrity();
+    // check if the inserted values are all there
+    for (int i = 0; i < 500; i++) {
+      EXPECT_TRUE(ht.Remove(nullptr, i, i));
+      std::vector<int> res;
+      EXPECT_FALSE(ht.GetValue(nullptr, i, &res));
+      EXPECT_EQ(0, res.size()) << "Found non-existent key " << i << std::endl;
+    }
+
+    ht.Verifyintegrity();
+
+    // insert one more value for each key
+    for (int i = 1000; i < 1500; i++) {
+      EXPECT_TRUE(ht.Insert(nullptr, i, i));
+      std::vector<int> res;
+      EXPECT_TRUE(ht.GetValue(nullptr, i, &res));
+      EXPECT_EQ(1, res.size()) << "Failed to insert " << i << std::endl;
+      EXPECT_EQ(i, res[0]);
+    }
+    ht.Verifyintegrity();
+
+    for (int i = 500; i < 1000; i++) {
+      ht.Remove(nullptr, i, i);
+      std::vector<int> res;
+      EXPECT_FALSE(ht.GetValue(nullptr, i, &res));
+      EXPECT_EQ(0, res.size()) << "Found non-existent key " << i << std::endl;
+    }
+    ht.Verifyintegrity();
+
+    // delete all values
+    for (int i = 0; i < 500; i++) {
+      EXPECT_TRUE(ht.Insert(nullptr, i, i));
+      std::vector<int> res;
+      EXPECT_TRUE(ht.GetValue(nullptr, i, &res));
+      EXPECT_EQ(1, res.size()) << "Failed to insert " << i << std::endl;
+      EXPECT_EQ(i, res[0]);
+    }
+
+    ht.Verifyintegrity();
+
+    for (int i = 1000; i < 1500; i++) {
+      ht.Remove(nullptr, i, i);
+      std::vector<int> res;
+      EXPECT_FALSE(ht.GetValue(nullptr, i, &res));
+      EXPECT_EQ(0, res.size()) << "Found non-existent key " << i << std::endl;
+    }
+
+    ht.Verifyintegrity();
+
+    for (int i = 0; i < 500; i++) {
+      ht.Remove(nullptr, i, i);
+      std::vector<int> res;
+      EXPECT_FALSE(ht.GetValue(nullptr, i, &res));
+      EXPECT_EQ(0, res.size()) << "Found non-existent key " << i << std::endl;
+    }
+
+    ht.Verifyintegrity();
+
+    for (int i = 0; i < 1500; i++) {
+      ht.Remove(nullptr, i, i);
+    }
+    std::cout << ht.GetGlobalDepth() << std::endl;
+    assert(ht.GetGlobalDepth() <= 1);
+    ht.Verifyintegrity();
+
+    disk_manager->ShutDown();
+    remove("test.db");
+    delete disk_manager;
+    delete bpm;
+  }
+}
+
+}  // namespace bustub
