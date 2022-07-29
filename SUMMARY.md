@@ -2,6 +2,10 @@
 
 * [cmu15-445\_note](README.md)
 
+## LAB1 BUFFER POOL
+
+* [LRU](lab1-buffer-pool/lru.md)
+
 ## Lab2 Hash Index
 
 * [Extendible Hash](lab2-hash-index/extendible-hash.md)
