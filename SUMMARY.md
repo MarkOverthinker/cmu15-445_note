@@ -4,7 +4,7 @@
 
 ## LAB1 BUFFER POOL
 
-* [LRU](lab1-buffer-pool/lru.md)
+* [LRU REPLACER](lab1-buffer-pool/lru-replacer.md)
 * [BUFFER POOL MANAGER INSTANCE](lab1-buffer-pool/buffer-pool-manager-instance.md)
 * [PARALLEL BUFFER POOL MANAGER](lab1-buffer-pool/parallel-buffer-pool-manager.md)
 
