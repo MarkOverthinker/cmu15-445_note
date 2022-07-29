@@ -6,6 +6,7 @@
 
 * [LRU](lab1-buffer-pool/lru.md)
 * [BUFFER POOL MANAGER INSTANCE](lab1-buffer-pool/buffer-pool-manager-instance.md)
+* [PARALLEL BUFFER POOL MANAGER](lab1-buffer-pool/parallel-buffer-pool-manager.md)
 
 ## Lab2 Hash Index
 
