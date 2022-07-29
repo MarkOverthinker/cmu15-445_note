@@ -5,6 +5,7 @@
 ## LAB1 BUFFER POOL
 
 * [LRU](lab1-buffer-pool/lru.md)
+* [BUFFER POOL MANAGER INSTANCE](lab1-buffer-pool/buffer-pool-manager-instance.md)
 
 ## Lab2 Hash Index
 
