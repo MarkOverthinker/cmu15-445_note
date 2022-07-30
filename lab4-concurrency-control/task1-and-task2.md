@@ -44,6 +44,6 @@
 
 ### Unlock
 
-检查事务状态是否为SHRINKING
+检查事务状态是否为GROWING，若是则置状态为SHRINKING，进入解锁阶段。实际上不能直接判断在不在SHRINKING阶段，COMMIT阶段和ABORT阶段也可能解锁。
 
 在队列中去掉锁请求，并在事务锁集合中去掉该锁即可。
