@@ -18,8 +18,11 @@
 ## LAB4 CONCURRENCY CONTROL
 
 * [事务的隔离性级别](lab4-concurrency-control/shi-wu-de-ge-li-xing-ji-bie.md)
+* [2PL](lab4-concurrency-control/2pl.md)
+* [数据结构](lab4-concurrency-control/shu-ju-jie-gou.md)
+* [TASK1\&TASK2](lab4-concurrency-control/task1-and-task2.md)
+* [TASK3](lab4-concurrency-control/task3.md)
 
 ***
 
-* [数据结构](shu-ju-jie-gou.md)
-* [TASK1\&TASK2](task1-and-task2.md)
+* [总](zong.md)
