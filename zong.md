@@ -8,4 +8,4 @@ lab3:火山模型（关系代数分成多个operator,如project, predicate, scan
 
 {% embed url="https://zhuanlan.zhihu.com/p/219516250" %}
 
-lab4:2pl,增强版2pl避免级联终止，
+lab4:2pl,增强版2pl避免级联终止，隔离级别RR,RU,RC。would-wait,wait-die,哲学家也可以用
